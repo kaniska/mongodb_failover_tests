@@ -1,0 +1,31 @@
+2014-09-22T07:09:09.412+0000 ***** SERVER RESTARTED *****
+2014-09-22T07:09:09.416+0000 [initandlisten] MongoDB starting : pid=703 port=27017 dbpath=/var/data/mongodb 64-bit host=mongodb-11022468-2-25697045
+2014-09-22T07:09:09.416+0000 [initandlisten] db version v2.6.1
+2014-09-22T07:09:09.416+0000 [initandlisten] git version: 4b95b086d2374bdcfcdf2249272fb552c9c726e8
+2014-09-22T07:09:09.416+0000 [initandlisten] build info: Linux build14.nj1.10gen.cc 2.6.32-431.3.1.el6.x86_64 #1 SMP Fri Jan 3 21:39:27 UTC 2014 x86_64 BOOST_LIB_VERSION=1_49
+2014-09-22T07:09:09.416+0000 [initandlisten] allocator: tcmalloc
+2014-09-22T07:09:09.416+0000 [initandlisten] options: { config: "/etc/mongodb.conf", net: { port: 27017 }, processManagement: { fork: true }, replication: { replSetName: "rs0" }, storage: { dbPath: "/var/data/mongodb", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "/var/log/mongodb/mongodb.log", quiet: true } }
+2014-09-22T07:09:09.419+0000 [initandlisten] journal dir=/var/data/mongodb/journal
+2014-09-22T07:09:09.419+0000 [initandlisten] recover begin
+2014-09-22T07:09:09.419+0000 [initandlisten] recover lsn: 178486
+2014-09-22T07:09:09.419+0000 [initandlisten] recover /var/data/mongodb/journal/j._0
+2014-09-22T07:09:09.420+0000 [initandlisten] recover skipping application of section seq:0 < lsn:178486
+2014-09-22T07:09:09.420+0000 [initandlisten] recover skipping application of section seq:118960 < lsn:178486
+2014-09-22T07:09:09.422+0000 [initandlisten] recover cleaning up
+2014-09-22T07:09:09.422+0000 [initandlisten] removeJournalFiles
+2014-09-22T07:09:09.423+0000 [initandlisten] recover done
+2014-09-22T07:09:09.487+0000 [initandlisten] waiting for connections on port 27017
+2014-09-22T07:09:09.504+0000 [rsStart] replSet I am mongodb-11022468-2-25697045:27017
+2014-09-22T07:09:09.504+0000 [rsStart] replSet STARTUP2
+2014-09-22T07:09:09.504+0000 [rsSync] replSet SECONDARY
+2014-09-22T07:09:09.504+0000 [rsMgr] replSet can't see a majority, will not try to elect self
+2014-09-22T07:09:09.509+0000 [rsHealthPoll] replset info mongodb-11026402-1-25697069:27017 thinks that we are down
+2014-09-22T07:09:09.509+0000 [rsHealthPoll] replSet member mongodb-11026402-1-25697069:27017 is up
+2014-09-22T07:09:09.509+0000 [rsHealthPoll] replSet member mongodb-11026402-1-25697069:27017 is now in state SECONDARY
+2014-09-22T07:09:09.509+0000 [rsHealthPoll] replset info mongodb-11026402-2-25697072:27017 thinks that we are down
+2014-09-22T07:09:09.509+0000 [rsHealthPoll] replSet member mongodb-11026402-2-25697072:27017 is up
+2014-09-22T07:09:09.509+0000 [rsHealthPoll] replSet member mongodb-11026402-2-25697072:27017 is now in state PRIMARY
+2014-09-22T07:09:09.512+0000 [rsMgr] not electing self, mongodb-11026402-2-25697072:27017 would veto with 'I am already primary, mongodb-11022468-2-25697045:27017 can try again once I've stepped down'
+2014-09-22T07:09:11.512+0000 [rsHealthPoll] replSet member mongodb-11026402-2-25697072:27017 is now in state SECONDARY
+2014-09-22T07:09:11.514+0000 [rsMgr] replSet info electSelf 0
+2014-09-22T07:09:12.504+0000 [rsMgr] replSet PRIMARY
