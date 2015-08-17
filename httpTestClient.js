@@ -28,7 +28,7 @@ var options_get_localhost = {
 
 ////// Function Definitions
 //CREATE Record
-createPipeline = function createPipeline(callback) {
+createEntity = function createEntity(callback) {
 	var payload1 = {};
     var payloadJSONobj1=JSON.stringify(payload1);
     var url = '/rest/api/';
@@ -68,7 +68,7 @@ createPipeline = function createPipeline(callback) {
 }
 
 //// GET Records
-searchPipeline = function searchPipeline(callback) {
+searchEntity = function searchEntity(callback) {
 	console.info('\nNow Count Data .... ');
 	var searchReq = http.request(options_get_localhost, function(response) {
 	    console.log("statusCode: ", response.statusCode);
@@ -93,8 +93,8 @@ searchPipeline = function searchPipeline(callback) {
 
 ///
 
-createPipeline(function(pipelineId) {
-		searchPipeline(function() {
+createEntity(function(entityId) {
+		searchEntity(function() {
 		}); 
 }); 
 
