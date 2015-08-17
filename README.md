@@ -16,23 +16,30 @@ curl -XGET 'http://localhost:3004/rest/api/count/'
 
 ##### DR Scenario - 1
 > Incidence - S1 / S2 goes down.
+
 Failover Test :
 > MongoDB should continue to work without interruption.
+
 > Writes / Reads should succeed 
 curl -XPOST 'http://localhost:3004/rest/api/' -d '{itemName:"iPhone", price:"200”}'
 curl -XGET 'http://localhost:3004/rest/api/count/'
+
 Recovery Test :
 > S1 / S2 is up again
 > MongoDB should perform without issues.
 > Writes / Reads should succeed 
 curl -XPOST 'http://localhost:3004/rest/api/' -d '{itemName:"iPhone", price:"200”}'
 curl -XGET 'http://localhost:3004/rest/api/count/'
+
 ##### DR Scenario - 2
 > Incidence - Primary P1 goes down 
+
 Failover Test :
+
 > MongoDB should perform without issues.
 > One of the secondary in DAL should become Primary
 > Writes / Reads should succeed 
+
 curl -XPOST 'http://localhost:3004/rest/api/' -d '{itemName:"iPhone", price:"200”}'
 curl -XGET 'http://localhost:3004/rest/api/count/'
 Recovery Test :
@@ -43,26 +50,39 @@ curl -XGET 'http://localhost:3004/rest/api/count/'
 
 ##### DR Scenario - 3
 > Incidence - Both S1 and S2 go down.
+
 Failover Test :
+
 > MongoDB P1 will become read-only.
+
 Take backup of PRIMARY db
+
 mongodump -oplog --out /app/backup/mongodump-mm-dd-yyyy
 tar -zcvf mongodump-mm-dd-yyyy.tar.gz /app/bkup/mongodump-mm-dd-yyyy
 scp mongodump-mm-dd-yyyy.tar.gz p1_:~/temp/
+
 Force secondary to become primary
-start mongo shell
+
+> start mongo shell
+
 mongo <surviving-member-hostname>
 cfg = rs.conf()
-Find and set  the member id of the <secondary-to-be-promoted-as-primary>
-for example cfg.members = [cfg.members[2]]   // here members[2] is the surviving one !
+
+> Find and set  the member id of the <secondary-to-be-promoted-as-primary>
+
+for example,  cfg.members = [cfg.members[2]]   // here members[2] is the surviving one !
 rs.reconfig(cfg,{force : true})
-Now Writes / Reads should succeed 
+
+> Now Writes / Reads should succeed 
 curl -XPOST 'http://localhost:3004/rest/api/' -d '{itemName:"iPhone", price:"200”}'
 curl -XGET 'http://localhost:3004/rest/api/count/'
+
 Recovery Test :
-both S1 and S2 are up.
+> both S1 and S2 are up.
+
 Add the members to replicaset
-login to the box S1 and S2 and start mongod in each box using the start script
+
+> login to the box S1 and S2 and start mongod in each box using the start script
 start mongo shell of primary mongod
 mongo <primary-hostname>
 rs.add(<secondary-1-hostname>)
